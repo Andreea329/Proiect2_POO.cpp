@@ -37,10 +37,12 @@ public:
     friend ostream& operator<<(ostream&, Eveniment);
     friend istream& operator>>(istream&, Eveniment&);
     static int getNrEvenimente();
-    explicit operator string(); // operator de cast la string explicit
-    int operator()();  // functie ce returneaza lungimea adresei
-    string data_eveniment();  //prima metoda
+    explicit operator string(); 
+    int operator()();  
+    string data_eveniment(); 
     static  void setNrEvenimente2022(int nr);
+
+    static int NrEvenMartie2022(int nrEvMartie);
 
 
 

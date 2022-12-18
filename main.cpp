@@ -113,7 +113,8 @@ int main()
 
 
 	for (Location& location : listaLocuri) {
-		cout << "Locul"  << location.getLocul() <<" " << "Randul" << " " << location.getRandul() << " ";
+		cout << "Locul"  <<" " << location.getLocul() << " " << "Randul" << " " << location.getRandul() << " " << endl;
+		
 	}
 
 	Zona z1("stadion", lista_locuri, 2);

@@ -15,7 +15,7 @@ Bilet::Bilet() :idBilet(0), eveniment()
 }
 Bilet::Bilet(const char* categorieBilet, float pretBilet) :idBilet(idBilet),eveniment()
 {
-	//eveniment = nullptr;
+	
 	this->categorieBilet = new char[strlen(categorieBilet) + 1];
 	strcpy_s(this->categorieBilet, strlen(categorieBilet) + 1, categorieBilet);
 	this->pretBilet = pretBilet;
@@ -61,7 +61,7 @@ Bilet& Bilet:: operator=(const Bilet& b)
 {
 	if (this != &b)
 	{
-		if (eveniment != nullptr)
+		if (eveniment!=nullptr)
 		{
 			delete[] eveniment;
 			eveniment = 0;
@@ -106,9 +106,15 @@ Eveniment* Bilet::getEveniment()
 }
 void Bilet::setEvenimentB(Eveniment* evnim)
 {
-	
+	if (evnim == nullptr)
+	{
+		cout << "Eroare!";
+	}
+	else
+	{
 		eveniment = new Eveniment[1];
 		eveniment[0] = evnim[0];
+	}
 
 }
 char* Bilet::getCategorieEV()
@@ -172,3 +178,34 @@ istream& operator>>(istream& in, Bilet& b)
 	return in;
 
  }
+bool Bilet:: operator!()
+{
+	return pretBilet > 0;
+}
+Bilet Bilet::operator+(int adaousPret)
+{
+	Bilet copie = *this;
+	copie.pretBilet += adaousPret;
+	return copie;
+}
+
+void Bilet::discount(int disc)
+{
+	if (disc > 0 && pretBilet > 150)
+	{
+		pretBilet = pretBilet - ((pretBilet * disc) / 100);
+	}
+}
+float Bilet::pret_max_bilet(float pMax)
+{
+	int max;
+	if (pretBilet > pMax)
+	{
+		max = pretBilet;
+	}
+	else
+	{
+		max = pMax;
+	}
+	return max;
+}

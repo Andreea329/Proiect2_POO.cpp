@@ -25,6 +25,11 @@ public:
 	Bilet(const Bilet& b);
 	~Bilet();
 	Bilet& operator=(const Bilet& b);
+	bool  operator!();
+	Bilet operator+(int adaousPret);
+	void discount(int disc);
+	float pret_max_bilet(float pMax);
+	
 
 	
 };

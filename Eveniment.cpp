@@ -103,7 +103,8 @@ string Eveniment::getZiEveniment()
 }
 
 void Eveniment::setZiEveniment(string ziEveniment)
-{
+{   
+
     this->ziEveniment = ziEveniment;
 }
 
@@ -201,4 +202,8 @@ string Eveniment::data_eveniment()
     string dataEvenCompleta;
     dataEvenCompleta = ziEveniment + " " + lunaEveniment + " " + anEveniment + " " + oraEveniment;
     return dataEvenCompleta;
+}
+ int Eveniment::NrEvenMartie2022(int nrEvMartie)
+{ 
+     return nrEvMartie;
 }
