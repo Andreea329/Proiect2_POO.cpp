@@ -1,209 +1,204 @@
-#include "Eveniment.h"
+#include"Eveniment.h"
+#include"Locatie.h"
 #include<iostream>
-#include<string>
 using namespace std;
 
-Eveniment::Eveniment()
+Eveniment::Eveniment() :durataEveniment(2)
 {
-    categorieEveniment = new char[strlen(" ") + 1];
-    strcpy_s(categorieEveniment, strlen(" ") + 1, " ");
-    ziEveniment = " ";
-    oraEveniment = " ";
-    anEveniment = " ";
-    lunaEveniment = " ";
+	this->categorieEveniment = nullptr;
+	this->ziEveniment = "";
+	this->oraEveniment = "";
+	this->anEveniment = "";
+	this->lunaEveniment = "";
+	this->locatieEveniment = Locatie();
 }
-
-Eveniment::Eveniment(const char* categorieEveniment, string ziEveniment, string oraEveniment, string anEveniment, string lunaEveniment)
+Eveniment::Eveniment(const char* categorieEveniment, string ziEveniment, string oraEveniment, string anEveniment, string lunaEveniment, int durataEveniment, Locatie locatieEveniment) :durataEveniment(durataEveniment)
 {
-    this->categorieEveniment = new char[strlen(categorieEveniment) + 1];
-    strcpy_s(this->categorieEveniment, strlen(categorieEveniment) + 1, categorieEveniment);
-    this->ziEveniment = ziEveniment;
-    this->oraEveniment = oraEveniment;
-    this->anEveniment = anEveniment;
-    this->lunaEveniment = lunaEveniment;
+	this->categorieEveniment = new char[strlen(categorieEveniment) + 1];
+	strcpy_s(this->categorieEveniment, strlen(categorieEveniment) + 1, categorieEveniment);
+	this->ziEveniment = ziEveniment;
+	this->oraEveniment = oraEveniment;
+	this->anEveniment = anEveniment;
+	this->lunaEveniment = lunaEveniment;
+	this->locatieEveniment = locatieEveniment;
 }
-Eveniment::Eveniment(const Eveniment& e)
+Eveniment::Eveniment(const Eveniment& e) :durataEveniment(e.durataEveniment)
 {
-    if (e.categorieEveniment != nullptr)
-    {
-        this->categorieEveniment = new char[strlen(e.categorieEveniment) + 1];
-        strcpy_s(this->categorieEveniment, strlen(e.categorieEveniment) + 1, e.categorieEveniment);
-    }
-    else
-    {
-        this->categorieEveniment = 0;
-    }
-    this->ziEveniment = e.ziEveniment;
-    this->oraEveniment = e.oraEveniment;
-    this->anEveniment = e.anEveniment;
-    this->lunaEveniment = e.lunaEveniment;
+	this->categorieEveniment = new char[strlen(e.categorieEveniment) + 1];
+	strcpy_s(this->categorieEveniment, strlen(e.categorieEveniment) + 1, e.categorieEveniment);
+	this->ziEveniment = e.ziEveniment;
+	this->oraEveniment = e.oraEveniment;
+	this->anEveniment = e.anEveniment;
+	this->lunaEveniment = e.lunaEveniment;
+	this->locatieEveniment = e.locatieEveniment;
 }
 Eveniment::~Eveniment()
 {
-    if (categorieEveniment != nullptr)
-    {
-        delete[] categorieEveniment;
-        categorieEveniment = nullptr;
-    }
+	if (this->categorieEveniment != nullptr)
+	{
+		delete[] this->categorieEveniment;
+		this->categorieEveniment = nullptr;
+	}
 }
-Eveniment& Eveniment:: operator=(const Eveniment& e)
+Eveniment& Eveniment::operator=(const Eveniment& e)
 {
-    if (this != &e)
-    {
-        if (categorieEveniment != nullptr)
-        {
-            delete[] categorieEveniment;
-            categorieEveniment = nullptr;
-        }
-        if (e.categorieEveniment != nullptr)
-        {
-            this->categorieEveniment = new char[strlen(e.categorieEveniment) + 1];
-            strcpy_s(this->categorieEveniment, strlen(e.categorieEveniment) + 1, e.categorieEveniment);
-        }
-        else
-        {
-            this->categorieEveniment = 0;
-        }
-        this->ziEveniment = e.ziEveniment;
-        this->oraEveniment = e.oraEveniment;
-        this->anEveniment = e.anEveniment;
-        this->lunaEveniment = e.lunaEveniment;
-
-    }
-    return *this;
-}
-
-char* Eveniment::getCategorieEveniment()
-{
-    if (categorieEveniment != nullptr)
-    {
-        char* copie = new char[strlen(categorieEveniment) + 1];
-        strcpy_s(copie, strlen(categorieEveniment) + 1, categorieEveniment);
-        return copie;
-    }
-}
-
-void Eveniment::setCategorieEveniment(char* categorieEveniment)
-{
-    if (categorieEveniment != nullptr)
-    {
-        if (this->categorieEveniment != nullptr)
-        {
-            delete[] this->categorieEveniment;
-
-        }
-        this->categorieEveniment = new char[strlen(categorieEveniment) + 1];
-        strcpy_s(this->categorieEveniment, strlen(categorieEveniment) + 1, categorieEveniment);
-    }
+	if (this != &e)
+	{
+		if (this->categorieEveniment != nullptr)
+		{
+			delete[] this->categorieEveniment;
+			this->categorieEveniment = nullptr;
+		}
+		this->categorieEveniment = new char[strlen(e.categorieEveniment) + 1];
+		strcpy_s(this->categorieEveniment, strlen(e.categorieEveniment) + 1, e.categorieEveniment);
+		this->ziEveniment = e.ziEveniment;
+		this->oraEveniment = e.oraEveniment;
+		this->anEveniment = e.anEveniment;
+		this->lunaEveniment = e.lunaEveniment;
+		this->locatieEveniment = e.locatieEveniment;
+	}
+	return *this;
 }
 
 string Eveniment::getZiEveniment()
 {
-    return ziEveniment;
+	return ziEveniment;
 }
-
 void Eveniment::setZiEveniment(string ziEveniment)
-{   
-
-    this->ziEveniment = ziEveniment;
+{
+	this->ziEveniment = ziEveniment;
 }
-
 string Eveniment::getOraEveniment()
 {
-    return oraEveniment;
+	return oraEveniment;
 }
 void Eveniment::setOraEveniment(string oraEveniment)
 {
-    this->oraEveniment = oraEveniment;
+	this->oraEveniment = oraEveniment;
 }
 string Eveniment::getAnEveniment()
 {
-    return anEveniment;
+	return anEveniment;
 }
 void Eveniment::setAnEveniment(string anEveniment)
 {
-    this->anEveniment = anEveniment;
+	this->anEveniment = anEveniment;
 }
-string Eveniment::getLunaEveniment()
+Locatie Eveniment::getLocatieEveniment()
 {
-    return lunaEveniment;
+	return locatieEveniment;
+}
+void Eveniment::setLocatieEveniment(Locatie locatieEveniment)
+{
+	this->locatieEveniment = locatieEveniment;
 }
 
-void Eveniment::setLunaEveniment(string lunaEveniment)
+int Eveniment::nrEvenimente2022 = 20;
+int Eveniment::getNrEvenimente()
 {
-    this->lunaEveniment = lunaEveniment;
+	return nrEvenimente2022;
 }
-ostream& operator<<(ostream& out, Eveniment e)
-{
-    out << "Categoria evenimentului este: ";
-    if (e.categorieEveniment != nullptr)
-    {
-        out << e.categorieEveniment;
-    }
-    out << endl;
-    out << "Ziua evenimentului este: " << e.ziEveniment << endl;
-    out << "Ora evenimentului este: " << e.oraEveniment << endl;
-    out << "Anul in care se desfasoara evenimentul este: " << e.anEveniment << endl;
-    out << "Luna in care se desfasoara evenimentul este: " << e.lunaEveniment << endl;
 
-    return out;
+void Eveniment::setNrEvenimente2022(int nr)
+{
+	Eveniment::nrEvenimente2022 = nr;
+}
+
+ostream& operator<<(ostream& out, const Eveniment& e)
+{
+	out << "Categoria evenimentului este : " << e.categorieEveniment << endl;
+	out << "Ziua evenimentului este : " << e.ziEveniment << endl;
+	out << "Ora evenimentului este : " << e.oraEveniment << endl;
+	out << "Anul evenimentului este : " << e.anEveniment << endl;
+	out << "Luna evenimentului este : " << e.lunaEveniment << endl;
+	out << "Durata evenimentului este : " << e.durataEveniment << endl;
+	out << "Structura locatiei evenimentului este : " << endl << e.locatieEveniment << endl;
+	return out;
 }
 
 istream& operator>>(istream& in, Eveniment& e)
 {
-    string buffer;
-    cout << "Categoria evenimentului este: ";
-    in >> buffer;
-    if (e.categorieEveniment != nullptr)
-    {
-        delete[] e.categorieEveniment;
-    }
-    e.categorieEveniment = new char[buffer.length() + 1];
-    strcpy_s(e.categorieEveniment, buffer.length() + 1, buffer.c_str());
+	cout << "Sa se introduca categoria evenimentului : ";
+	string buffer;
+	in >> buffer;
+	if (e.categorieEveniment != nullptr)
+	{
+		delete[] e.categorieEveniment;
+	}
+	e.categorieEveniment = new char[buffer.length() + 1];
+	strcpy_s(e.categorieEveniment, buffer.length() + 1, buffer.c_str());
+	cout << "Sa se introduca ziua evenimentului : ";
+	in >> e.ziEveniment;
+	cout << "Sa se introduca ora evenimentului : ";
+	in >> e.oraEveniment;
+	cout << "Sa se introduca anul evenimentului : ";
+	in >> e.anEveniment;
+	cout << "Sa se introduca luna evenimentului : ";
+	in >> e.lunaEveniment;
 
-    cout << "Ziua in care se va desfasura evenimentul este: ";
-    in >> e.ziEveniment;
-    cout << "Ora la care va avea loc evenimentul este: ";
-    in >> e.oraEveniment;
-    cout << "Anul in care va avea loc evenimentul este: ";
-    in >> e.anEveniment;
-    cout << "Luna in care va avea loc evenimentul este: ";
-    in >> e.lunaEveniment;
+	cout << "Introduceti structura locatiei evenimentului : ";
+	in >> e.locatieEveniment;
+	return in;
+}
 
-    return in;
+void Eveniment::NrPersoanePrezenteEveniment(int nrPersoane)
+{
+	if (nrPersoane > 200)
+	{
+		cout << "Evenimentul este  mare" << endl;
+	}
+	else
+	{
+		cout << "Evenimentul este  mic" << endl;
+	}
 }
-int Eveniment::nrEvenimente2022 = 0;
 
-int Eveniment::getNrEvenimente()
+string Eveniment::locatieInfo(string oras, string strada)
 {
-    return nrEvenimente2022;
+	string locatie_info;
+	locatie_info = oras + " " + strada;
+	return locatie_info;
+
 }
-void Eveniment::setNrEvenimente2022(int nr)
+
+string Eveniment::data_eveniment()
 {
-    Eveniment::nrEvenimente2022 = nr;
+	string data;
+	data = ziEveniment + "-" + lunaEveniment + "-" + anEveniment;
+	return data;
 }
-Eveniment:: operator string()
+Eveniment::  operator string()
 {
-    return ziEveniment;
+	return lunaEveniment;
 }
 int Eveniment::operator()()
 {
-    if (categorieEveniment != nullptr)
-    {
-        return strlen(categorieEveniment);
-    }
-    else
-    {
-        return 0;
-    }
+	if (categorieEveniment != nullptr)
+	{
+		return strlen(categorieEveniment);
+	}
+	else
+	{
+		return 0;
+	}
 }
-string Eveniment::data_eveniment()
+
+string EvenimentCaritabil::getCauza()
 {
-    string dataEvenCompleta;
-    dataEvenCompleta = ziEveniment + " " + lunaEveniment + " " + anEveniment + " " + oraEveniment;
-    return dataEvenCompleta;
+	return cauza;
 }
- int Eveniment::NrEvenMartie2022(int nrEvMartie)
-{ 
-     return nrEvMartie;
+
+
+double EvenimentCaritabil::getSumaDonata()
+{
+	return sumaDonata;
+}
+
+ostream& operator<<(ostream& out, const EvenimentCaritabil& ec)
+{
+
+	out << (Eveniment)ec;
+	out << "Cauza: " << ec.cauza << endl;
+	out << "Suma donata: " << ec.sumaDonata << endl;
+	return out;
 }

@@ -1,35 +1,26 @@
 #pragma once
 #include "Eveniment.h"
 #include<iostream>
-#include<string>
-
 using namespace std;
 
 class Bilet
 {
-	const int idBilet;
-	Eveniment* eveniment;
-	char* categorieBilet;
+	int idBilet;
+	string categorieBilet;
 	float pretBilet;
+	Eveniment evenimentBilet;
+
 public:
-
 	Bilet();
-	Bilet(const char* categorieBilet, float pretBilet);
-	friend ostream& operator <<(ostream& , Bilet );
-	friend istream& operator>>(istream&, Bilet&);
-
-	Eveniment* getEveniment();
-	void setEvenimentB(Eveniment* evnim);
-	char* getCategorieEV();
+	Bilet(int idBilet, string categorieBilet, float pretBilet, Eveniment evenimentBilet);
+	int getIdBilet();
+	string getCategorieBilet();
 	float getPretBilet();
-	Bilet(const Bilet& b);
-	~Bilet();
-	Bilet& operator=(const Bilet& b);
-	bool  operator!();
+	Eveniment getEvenimentBilet();
+	friend ostream& operator<<(ostream&, const Bilet&);
+	friend istream& operator>>(istream&, Bilet&);
 	Bilet operator+(int adaousPret);
-	void discount(int disc);
+	Bilet operator++();
+	float discount(int disc);
 	float pret_max_bilet(float pMax);
-	
-
-	
 };

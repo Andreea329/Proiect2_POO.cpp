@@ -1,187 +1,64 @@
+#include"Bilet.h"
 #include"Eveniment.h"
-#include "Bilet.h"
-#include "Location.h"
+#include"Locatie.h"
 #include<iostream>
-#include<string>
-#include<string.h>
 using namespace std;
 
-Bilet::Bilet() :idBilet(0), eveniment()
+Bilet::Bilet() :idBilet(0)
 {
-	categorieBilet = new char[strlen(" ") + 1];
-	strcpy_s(categorieBilet, strlen(" ") + 1, " ");
-	pretBilet = 0;
-	
+	this->categorieBilet = "";
+	this->pretBilet = 0;
+	this->evenimentBilet = Eveniment();
 }
-Bilet::Bilet(const char* categorieBilet, float pretBilet) :idBilet(idBilet),eveniment()
+Bilet::Bilet(int idBilet, string categorieBilet, float pretBilet, Eveniment evenimentBilet) :idBilet(idBilet)
 {
-	
-	this->categorieBilet = new char[strlen(categorieBilet) + 1];
-	strcpy_s(this->categorieBilet, strlen(categorieBilet) + 1, categorieBilet);
+	this->categorieBilet = categorieBilet;
 	this->pretBilet = pretBilet;
-	
+	this->evenimentBilet = evenimentBilet;
 }
-Bilet::Bilet(const Bilet& b):idBilet(b.idBilet)
-{
-	if (b.eveniment != nullptr)
-	{
-		this->eveniment = new Eveniment[1];
-		this->eveniment[0] = b.eveniment[0];
-	}
-	else
-	{
-		this->eveniment = 0;
-	}
-		this->pretBilet = b.pretBilet;
-		if (b.categorieBilet != nullptr)
-		{
-			this->categorieBilet = new char[strlen(b.categorieBilet) + 1];
-			strcpy_s(this->categorieBilet, strlen(b.categorieBilet) + 1, b.categorieBilet);
-		}
-		else
-		{
-			this->categorieBilet = nullptr;
-		}
-	
-}
-Bilet::~Bilet()
-{
-	if (eveniment != nullptr)
-	{
-		delete[] eveniment;
-		eveniment = 0;
-	}
-	if (categorieBilet != nullptr)
-	{
-		delete[] categorieBilet;
-		categorieBilet = 0;
-	}
-}
-Bilet& Bilet:: operator=(const Bilet& b)
-{
-	if (this != &b)
-	{
-		if (eveniment!=nullptr)
-		{
-			delete[] eveniment;
-			eveniment = 0;
-		}
-		if (b.eveniment != nullptr)
-		{
-			this->eveniment = new Eveniment[1];
-			this->eveniment[0] = b.eveniment[0];
-		}
-		else
-		{
-			this->eveniment = 0;
-		}
-		this->pretBilet = b.pretBilet;
-		if (categorieBilet != nullptr)
-		{
-			delete[] categorieBilet;
-			categorieBilet = 0;
-		}
-		if (b.categorieBilet != nullptr)
-		{
-			this->categorieBilet = new char[strlen(b.categorieBilet) + 1];
-			strcpy_s(this->categorieBilet, strlen(b.categorieBilet) + 1, b.categorieBilet);
-		}
-		else
-		{
-			this->categorieBilet = nullptr;
-		}
 
+int Bilet::getIdBilet()
+{
+	return idBilet;
+}
 
-		return *this;
-	}
-}
-Eveniment* Bilet::getEveniment()
+string Bilet::getCategorieBilet()
 {
-	if (eveniment != nullptr)
-	{
-		Eveniment* copie = new Eveniment[1];
-		copie[0] = eveniment[0];
-		return copie;
-	}
+	return categorieBilet;
 }
-void Bilet::setEvenimentB(Eveniment* evnim)
-{
-	if (evnim == nullptr)
-	{
-		cout << "Eroare!";
-	}
-	else
-	{
-		eveniment = new Eveniment[1];
-		eveniment[0] = evnim[0];
-	}
 
-}
-char* Bilet::getCategorieEV()
-{
-	if (categorieBilet != nullptr)
-	{
-		char* copie = new char[strlen(categorieBilet) + 1];
-		strcpy_s(copie, strlen(categorieBilet) + 1, categorieBilet);
-		return copie;
-	}
-}
 float Bilet::getPretBilet()
 {
 	return pretBilet;
 }
-ostream& operator <<(ostream& out, Bilet b)
+
+Eveniment Bilet::getEvenimentBilet()
 {
-	b.eveniment = new Eveniment[1];
-	
-	{
-		out << "Evenimentul este: "<<b.eveniment[0];
-		
-	}
-
-	
-		if (b.categorieBilet != nullptr)
-	{
-		out << "Categoria biletului este: ";
-		out << b.categorieBilet;
-	}
-	out << endl;
-	out << "Pretul biletului este: " << b.pretBilet << endl;
-	
-
-	return out;
-
+	return evenimentBilet;
 }
+
+ostream& operator<<(ostream& out, const Bilet& b)
+{
+	out << "Id-up biletului este : " << b.idBilet << endl;
+	out << "Categoria biletului este : " << b.categorieBilet << endl;
+	out << "Pretul biletului este: " << b.pretBilet << endl;
+	out << "Evenimentul biletului este : " << endl << b.evenimentBilet << endl;
+	return out;
+}
+
 istream& operator>>(istream& in, Bilet& b)
 {
-	if (b.eveniment != nullptr )
-	{
-		delete[] b.eveniment;
-	}
-	b.eveniment = new Eveniment[1];
-	
-	{
-		cout << "Evenimentul este: ";
-		in >> b.eveniment[0];
-	}
-	string buffer4;
-	cout << "Categoria biletului este: ";
-	in >> buffer4;
-	if (b.categorieBilet != nullptr)
-	{
-		delete[] b.categorieBilet;
-	}
-	b.categorieBilet = new char[buffer4.length() + 1];
-	strcpy_s(b.categorieBilet, buffer4.length() + 1, buffer4.c_str());
-	cout << "Pretul biletului pus la vanzare pentru eveniment este: ";
+	cout << "Introduceti id-ul biletului: ";
+	in >> b.idBilet;
+	cout << "Introduceti categoria biletului: ";
+	in >> b.categorieBilet;
+	cout << "Introduceti pretul biletului: ";
 	in >> b.pretBilet;
+	cout << "Introduceti evenimentul biletului: ";
+	in >> b.evenimentBilet;
 	return in;
-
- }
-bool Bilet:: operator!()
-{
-	return pretBilet > 0;
 }
+
 Bilet Bilet::operator+(int adaousPret)
 {
 	Bilet copie = *this;
@@ -189,11 +66,21 @@ Bilet Bilet::operator+(int adaousPret)
 	return copie;
 }
 
-void Bilet::discount(int disc)
+Bilet Bilet::operator++()
+{
+	this->pretBilet++;
+	return *this;
+}
+
+float Bilet::discount(int disc)
 {
 	if (disc > 0 && pretBilet > 150)
 	{
-		pretBilet = pretBilet - ((pretBilet * disc) / 100);
+		return pretBilet = pretBilet - ((pretBilet * disc) / 100);
+	}
+	else
+	{
+		return pretBilet;
 	}
 }
 float Bilet::pret_max_bilet(float pMax)

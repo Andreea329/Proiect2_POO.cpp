@@ -21,10 +21,7 @@
     <ClCompile Include="Eveniment.cpp">
       <Filter>Header Files</Filter>
     </ClCompile>
-    <ClCompile Include="Location.cpp">
-      <Filter>Header Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Zona.cpp">
+    <ClCompile Include="Locatie.cpp">
       <Filter>Header Files</Filter>
     </ClCompile>
     <ClCompile Include="Bilet.cpp">
@@ -35,10 +32,7 @@
     <ClInclude Include="Eveniment.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Location.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Zona.h">
+    <ClInclude Include="Locatie.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Bilet.h">

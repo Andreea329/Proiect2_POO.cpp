@@ -129,15 +129,13 @@
   <ItemGroup>
     <ClCompile Include="Bilet.cpp" />
     <ClCompile Include="Eveniment.cpp" />
-    <ClCompile Include="Location.cpp" />
+    <ClCompile Include="Locatie.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Zona.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Bilet.h" />
     <ClInclude Include="Eveniment.h" />
-    <ClInclude Include="Location.h" />
-    <ClInclude Include="Zona.h" />
+    <ClInclude Include="Locatie.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
