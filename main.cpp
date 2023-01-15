@@ -1,6 +1,7 @@
 #include "Locatie.h"
 #include"Eveniment.h"
 #include "Bilet.h"
+#include<fstream>
 #include<iostream>
 using namespace std;
 
@@ -55,7 +56,22 @@ int main()
 	cout << b << endl;
 	//cout << b + 50;
 	//cout << ++b;
-	cout << b.discount(10);
+	cout << b.discount(10) << endl;
 	//cout << b.pret_max_bilet(100);
+	//l.detaliiLocatie();
+	//b.detaliiBilet();
+	
+	/*Locatie ll(5, new int[5] {4, 8, 16, 24, 30});
+	cout << ll << endl;
+	ll.ocupare_loc(ll, 1, 1);
+	ll.ocupare_loc(ll, 1, 2);
+	ll.ocupare_loc(ll, 1, 4);*/
+	
+	/*e3.detaliiEveniment();
+	cout << endl;
+	ec.informatiiEvenimentCaritabil();*/
+	
+	
+	
 }
 

@@ -1,0 +1,7 @@
+Numarul de randuri este: 4
+Numarul de locuri pe rand este: 
+6 9 12 15 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+

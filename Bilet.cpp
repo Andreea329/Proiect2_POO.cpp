@@ -96,3 +96,14 @@ float Bilet::pret_max_bilet(float pMax)
 	}
 	return max;
 }
+
+void Bilet::detaliiBilet()
+{
+	cout << "Biletele sunt necesare in format fizic sau electronic pentru a putea accesa evenimentul." << endl;
+}
+
+void Bilet::informatiiBilet()
+{
+	cout << "Biletele sunt disponibile in functie de locatia evenimentului si de numarul de locuri disponibile." << endl;
+	cout << "Achizitionarea biletelor se poate face doar online." << endl;
+}

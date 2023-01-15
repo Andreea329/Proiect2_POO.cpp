@@ -23,4 +23,6 @@ public:
 	Bilet operator++();
 	float discount(int disc);
 	float pret_max_bilet(float pMax);
+	virtual void detaliiBilet();
+	virtual void informatiiBilet();
 };

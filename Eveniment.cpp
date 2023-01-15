@@ -202,3 +202,13 @@ ostream& operator<<(ostream& out, const EvenimentCaritabil& ec)
 	out << "Suma donata: " << ec.sumaDonata << endl;
 	return out;
 }
+
+void Eveniment::detaliiEveniment()
+{
+	cout << "Evenimentul se va desfasura in conditii normale" << endl;
+}
+
+void EvenimentCaritabil::informatiiEvenimentCaritabil()
+{
+	cout << "Intreaga suma de bani va fi donata cauzei" << endl;
+}

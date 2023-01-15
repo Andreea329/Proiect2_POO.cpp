@@ -38,6 +38,7 @@ public:
 	explicit operator string();
 	int operator()();
 
+	virtual void detaliiEveniment();
 
 
 };
@@ -63,6 +64,7 @@ public:
 	double getSumaDonata();
 
 	friend ostream& operator<<(ostream&, const EvenimentCaritabil&);
+	virtual void informatiiEvenimentCaritabil();
 
 };
 

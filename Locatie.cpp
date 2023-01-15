@@ -17,7 +17,8 @@ Locatie::Locatie(int nrRanduri, int* LocuriRand)
 	{
 		this->LocuriRand[i] = LocuriRand[i];
 	}
-
+	
+	
 	int** matrLoc = new int* [nrRanduri];
 	for (int i = 0; i < nrRanduri; i++)
 	{
@@ -191,4 +192,9 @@ int& Locatie::operator[](int index)
 		return LocuriRand[index];
 	}
 	throw exception("index invalid");
+}
+
+ void Locatie:: detaliiLocatie()
+{
+	cout << "Acesta este numarul de randuri si de locuri de pe fiecare rand din sala."<<endl;
 }

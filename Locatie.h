@@ -25,6 +25,7 @@ public:
 
 	friend ostream& operator<<(ostream&, const Locatie&);
 	friend istream& operator>>(istream&, Locatie&);
+	virtual void detaliiLocatie();
 };
 
 
